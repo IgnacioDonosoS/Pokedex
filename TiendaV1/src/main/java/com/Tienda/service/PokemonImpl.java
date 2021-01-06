@@ -7,7 +7,7 @@ import com.Tienda.Repository.PokemonRepo;
 import com.Tienda.modelo.Pokemon;
 
 @Service
-public class PokemonImlp implements IPokemon{
+public class PokemonImpl implements IPokemon{
 	
 	@Autowired
 	PokemonRepo pRepo;

@@ -10,7 +10,7 @@ import com.Tienda.Repository.UsuarioRepo;
 import com.Tienda.modelo.Usuario;
 
 @Service
-public class UsuarioImlp implements IUsuario {
+public class UsuarioImpl implements IUsuario {
 
 	@Autowired
 	UsuarioRepo uRepo;
