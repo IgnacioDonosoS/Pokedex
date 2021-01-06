@@ -1,13 +1,13 @@
-package com.Tienda.Repository;
+package com.Tienda.service;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 import com.Tienda.modelo.Pokemon;
-import com.Tienda.modelo.Usuario;
 
-public interface PokemonRepo extends JpaRepository<Pokemon, Integer> {
+@Service
+public interface IPokemon {
 
 	public List<Pokemon> listarPokemones();
 	public Pokemon buscarPokemonPorId(int id);
