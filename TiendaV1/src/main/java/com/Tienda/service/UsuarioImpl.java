@@ -14,16 +14,7 @@ public class UsuarioImpl implements IUsuario {
 
 	@Autowired
 	UsuarioRepo uRepo;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
-	public Usuario registerNewUserAccount(Usuario u) {
-		Usuario user = new Usuario();
-		user.setNombre(u.getNombre());
-		user.setPassword(passwordEncoder.encode(u.getPassword()));
-		user.setRol("entrenador");
-		return uRepo.save(user);
-	}
 
 	@Override
 	public List<Usuario> listarUsuarios() {

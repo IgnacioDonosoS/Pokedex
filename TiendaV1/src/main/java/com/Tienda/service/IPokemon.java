@@ -1,12 +1,8 @@
 package com.Tienda.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.Tienda.modelo.Pokemon;
 
-@Service
 public interface IPokemon {
 
 	public List<Pokemon> listarPokemones();

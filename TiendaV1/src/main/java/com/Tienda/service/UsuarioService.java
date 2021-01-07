@@ -32,16 +32,11 @@ public class UsuarioService implements UserDetailsService{
 		return userDetails;
 	}
 	
-    public Usuario registerNewUserAccount (Usuario u) {
-        Usuario user = new Usuario();
-        user.setNombre(u.getNombre());
-        user.setPassword(passwordEncoder.encode(u.getPassword()));
-        user.setRol("entrenador");
-
-        return uRepo.save(user);
-
-    }
-	
-	
-
+	public Usuario registrarNuevoEntrenador(Usuario u) {
+		Usuario user = new Usuario();
+		user.setNombre(u.getNombre());
+		user.setPassword(passwordEncoder.encode(u.getPassword()));
+		user.setRol("entrenador");
+		return uRepo.save(user);
+	}
 }
