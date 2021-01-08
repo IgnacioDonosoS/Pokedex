@@ -20,7 +20,7 @@
 <div class="container">
     <div class="card card-login mx-auto text-center bg-white">
         <div class="card-header mx-auto bg-white">
-            <span> <img src="pokedexlogo.jpg" class="w-75" alt="Logo"> <img src="pokeball.png" class="" alt="Logopokeball"></span>
+            <span> <img src="img/pokedexlogo.jpg" class="w-75" alt="Logo"> <img src="img/pokeball.png" class="" alt="Logopokeball"></span>
                        
                         
                         
