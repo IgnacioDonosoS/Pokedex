@@ -37,8 +37,7 @@ public class PokemonImpl implements IPokemon{
 	@Override
 	public Pokemon modificarUnPokemon(Pokemon pokemon) {
 		if (poRepo.getOne(pokemon.getIdPokemon()) != null) {
-			poRepo.save(pokemon);
-			return pokemon;
+			return poRepo.save(pokemon);
 		} else {
 			return null;
 		}
@@ -46,12 +45,8 @@ public class PokemonImpl implements IPokemon{
 
 	@Override
 	public Pokemon agregarUnPokemon(Pokemon pokemon) {
-		if (poRepo.getOne(pokemon.getIdPokemon()) == null) {
-			poRepo.save(pokemon);
-			return pokemon;
-		} else {
-			return null;
-		}
+		return poRepo.save(pokemon);
+			 
 	}
 
 }

@@ -39,9 +39,8 @@ public class UsuarioImpl implements IUsuario {
 
 	@Override
 	public Usuario modificarUnUsuario(Usuario usuario) {
-		if (uRepo.getOne(usuario.getIdUsuario()) != null) {
-			uRepo.save(usuario);
-			return usuario;
+		if (uRepo.getOne(usuario.getIdUsuario()) != null) {	
+			return uRepo.save(usuario);
 		} else {
 			return null;
 		}
@@ -49,11 +48,7 @@ public class UsuarioImpl implements IUsuario {
 
 	@Override
 	public Usuario agregarUnUsuario(Usuario usuario) {
-		if (uRepo.getOne(usuario.getIdUsuario()) == null) {
-			uRepo.save(usuario);
-			return usuario;
-		} else {
-			return null;
-		}
+			return uRepo.save(usuario);
+
 	}
 }

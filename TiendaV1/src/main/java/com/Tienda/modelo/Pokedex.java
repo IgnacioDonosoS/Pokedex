@@ -36,6 +36,4 @@ public class Pokedex {
 	inverseJoinColumns =  @JoinColumn(name = "idPokemon"))
 	private List<Pokemon> pokemon;
 	
-	@OneToOne
-	private Usuario usuario;
 }

@@ -36,9 +36,8 @@ public class PokedexImpl implements IPokedex {
 
 	@Override
 	public Pokedex modificarUnPokedex(Pokedex pokedex) {
-		if (pRepo.getOne(pokedex.getIdPokedex()) != null) {
-			pRepo.save(pokedex);
-			return pokedex;
+		if (pRepo.getOne(pokedex.getIdPokedex()) != null) {	
+			return pRepo.save(pokedex);
 		} else {
 			return null;
 		}
@@ -46,11 +45,6 @@ public class PokedexImpl implements IPokedex {
 
 	@Override
 	public Pokedex agregarUnPokedex(Pokedex pokedex) {
-		if (pRepo.getOne(pokedex.getIdPokedex()) == null) {
-			pRepo.save(pokedex);
-			return pokedex;
-		} else {
-			return null;
-		}
+			return pRepo.save(pokedex);
 	}
 }
