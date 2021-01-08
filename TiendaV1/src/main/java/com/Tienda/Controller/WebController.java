@@ -16,11 +16,11 @@ public class WebController {
 	@Autowired PokemonImpl pokemonServ;
 	@Autowired UsuarioImpl usuarioServ;
 	
-	@GetMapping("/")
-	public void getHome (Model model) {
-		pokedexServ.listarPokedexs();
-		pokemonServ.borrarUnPokemon(0);
-		usuarioServ.buscarUsuarioPorId(0);
+	@GetMapping("/login")
+	public String getLogin(String nombre, Model model)
+	{
+		model.addAttribute("usuario", usuarioServ.buscarUsuarioPorNombre(nombre));
+		return "login";
 	}
 	
 	

@@ -51,4 +51,13 @@ public class UsuarioImpl implements IUsuario {
 			return uRepo.save(usuario);
 
 	}
+
+	@Override
+	public Usuario buscarUsuarioPorNombre(String nombre) {
+		if (uRepo.findByNombre(nombre) != null) {
+			return uRepo.findByNombre(nombre);
+		} else {
+			return null;
+		}
+	}
 }

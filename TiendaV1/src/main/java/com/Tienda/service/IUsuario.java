@@ -11,4 +11,5 @@ public interface IUsuario {
 	public void borrarUnUsuario(int id);
 	public Usuario modificarUnUsuario(Usuario usuario);
 	public Usuario agregarUnUsuario(Usuario usuario);
+	public Usuario buscarUsuarioPorNombre(String nombre);
 }
