@@ -22,4 +22,8 @@ public class Pokemon {
 	private int idPokemon;
 	private String nombrePokemon;
 	private String tipoPokemon;
+	private float altura;
+	private int peso;
+	private String frase;
+	private String imagen;
 }

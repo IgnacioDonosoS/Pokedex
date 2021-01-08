@@ -36,7 +36,11 @@ void contextLoads() {
 		a.setNombre("angela");
 		a.setPassword(encoder.encode("12345"));
 		a.setRol("entrenador");
-		uServ.agregarUnUsuario(a);
+		List<Pokemon> pmon = monServ.listarPokemones();
+		Pokedex pdex = new Pokedex(1, pmon);
+		dexServ.agregarUnPokedex(pdex);
+		a.setPokedex(pdex);
+		uServ.modificarUnUsuario(a);
 	}
 
 }
