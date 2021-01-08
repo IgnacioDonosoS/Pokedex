@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.Tienda.modelo.Pokedex;
 import com.Tienda.modelo.Pokemon;
@@ -23,16 +24,19 @@ class TiendaV1ApplicationTests {
 	PokedexImpl dexServ;
 	@Autowired
 	PokemonImpl monServ;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	@Test
-	void contextLoads() {
-//		List<Pokemon> listaPokemons = monServ.listarPokemones();
-//		Pokedex pDex = new Pokedex(1, listaPokemons);
-//		dexServ.agregarUnPokedex(pDex);
-//		Usuario usu1 = new Usuario(1, "Ignacio", "1234", "entrenador", pDex);
-//		uServ.agregarUnUsuario(usu1);
-		System.out.println(uServ.listarUsuarios().get(0).getPokedex().getPokemon().get(0).getNombrePokemon());
+void contextLoads() {
 		
+		Usuario a = new Usuario();
+		a.setIdUsuario(1);
+		a.setNombre("angela");
+		a.setPassword(encoder.encode("12345"));
+		a.setRol("entrenador");
+		uServ.agregarUnUsuario(a);
 	}
 
 }
