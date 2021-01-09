@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-	<c:forEach items="${usuario.Pokemon}" var="u">
+	<c:forEach items="${usuario.pokedex.pokemon}" var="u">
 		<div id="pokedex">
 			<div id="left">
 				<div id="logo"></div>
@@ -72,15 +72,15 @@
 				<div id="stats">
 
 					<strong>Name:</strong>
-					<c:out value="${u.pokemon.nombrePokemon}"></c:out>
+					"${u.nombrePokemon}"
 					<br /> <strong>Type:</strong>
-					<c:out value="${u.pokemon.tipoPokemon}"></c:out>
+					"${u.tipoPokemon}"
 					Water<br /> <strong>Altura:</strong>
-					<c:out value="${u.pokemon.altura}"></c:out>
+					"${u.altura}"
 					<br /> <strong>Peso:</strong>
-					<c:out value="${u.pokemon.peso}"></c:out>
+					"${u.peso}"
 					<br /> <br /> <strong>Evoluciones</strong><br />
-					<c:out value="${u.pokemon.frase}"></c:out>
+					"${u.frase}"
 				</div>
 			</div>
 			<div id="blueButtons1">
