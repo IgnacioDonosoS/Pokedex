@@ -724,12 +724,12 @@ body{
 
 	div#stats
 	{
-		height: 130px;
+		height: 150px;
 		width: 280px;
 		padding: 10px;
 		background-color: #30da0c;
 		z-index: 1;
-		font-size: 13px;
+		font-size: 12px;
 		font-family: arial, sans-serif;
 
 		position: absolute;
@@ -895,7 +895,7 @@ body{
 		background: -o-radial-gradient(#0abd0a, #057b05);
 	}
 
-	div#yellowBox1
+	button#yellowBox1
 	{
 		width: 140px;
 		height: 70px;

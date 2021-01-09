@@ -6,12 +6,13 @@
 <link rel="stylesheet" type="text/css" href="css/estiloPokedex.css"
 	media="screen" />
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/index.js"></script>
 <title>Document</title>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
 	<c:forEach items="${usuario.pokedex.pokemon}" var="u" begin="0" end="0">
-		<div id="pokedex">
+		<div id="pokedex1" style="display: block">
 			<div id="left">
 				<div id="logo"></div>
 				<div id="bg_curve1_left"></div>
@@ -36,7 +37,7 @@
 						<div id="buttontopPicture2"></div>
 					</div>
 					<div id="picture">
-						<img src="${u.imagen }" alt="psykokwak" height="170" />
+						<img src="${u.imagen}" alt="psykokwak" height="170" />
 					</div>
 					<div id="buttonbottomPicture"></div>
 					<div id="speakers">
@@ -71,7 +72,7 @@
 				<div id="stats">
 					<strong>Nombre:</strong> ${u.nombrePokemon} <br /> <strong>Tipo:</strong>
 					${u.tipoPokemon}<br /> <strong>Altura:</strong> ${u.altura} metros<br />
-					<strong>Peso:</strong> ${u.peso} Kg.<br /> <br /> <strong>Evoluciones</strong><br/>
+					<strong>Peso:</strong> ${u.peso} Kg. <br> <strong>Evoluciones</strong><br />
 					${u.frase}
 				</div>
 				<div id="blueButtons1">
@@ -92,8 +93,8 @@
 				<div id="miniButtonGlass5"></div>
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
-				<div id="yellowBox1"></div>
-				<div id="yellowBox2"></div>
+				<button id="yellowBox1" onclick=mostrar(${u.idPokemon})>Colección</button>
+				<div id="yellowBox2" class="btn"></div>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
 				<div id="curve1_right"></div>
@@ -128,7 +129,7 @@
 						<div id="buttontopPicture2"></div>
 					</div>
 					<div id="picture">
-						<img src="${p.imagen }" alt="psykokwak" height="170" />
+						<img src="${p.imagen}" alt="psykokwak" height="170" />
 					</div>
 					<div id="buttonbottomPicture"></div>
 					<div id="speakers">
@@ -163,7 +164,7 @@
 				<div id="stats">
 					<strong>Nombre:</strong> ${p.nombrePokemon} <br /> <strong>Tipo:</strong>
 					${p.tipoPokemon}<br /> <strong>Altura:</strong> ${p.altura} metros<br />
-					<strong>Peso:</strong> ${p.peso} Kg.<br /> <br /> <strong>Evoluciones</strong><br />
+					<strong>Peso:</strong> ${p.peso} Kg.<br /> <strong>Evoluciones</strong><br />
 					${p.frase}
 				</div>
 				<div id="blueButtons1">
@@ -184,8 +185,9 @@
 				<div id="miniButtonGlass5"></div>
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
-				<div id="yellowBox1"></div>
-				<div id="yellowBox2"></div>
+				<button id="yellowBox1"
+					onclick=mostrar(${p.idPokemon})>Colección</button>
+				<div id="yellowBox2" class="btn"></div>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
 				<div id="curve1_right"></div>
@@ -200,26 +202,25 @@
 
 
 
-<div id="tablaObtenidos">
+<div id="tablaObtenidos" style="display: none">
 	<table>
-    <!-- here should go some titles... -->
-    <tr>
-        <th>Nombre:</th>
-        
-        <th>Imagen:</th>
-    </tr>
-   <c:forEach items="${usuario.pokedex.pokemon}" var="m">
-    <tr>
-        <td id="pokemon${m.idPokemon}" class="btn">
-            ${m.nombrePokemon}
-        </td>
-        <td id="pokemon${m.idPokemon}" class="btn">
-            <img src="${m.miniaturas}"/>
-        </td>
-    </tr>
-    </c:forEach>
-</table>
-	
+		<!-- here should go some titles... -->
+		<tr>
+			<th>Nombre:</th>
+
+			<th>Imagen:</th>
+		</tr>
+		<c:forEach items="${usuario.pokedex.pokemon}" var="m">
+			<tr>
+				<td id="pokemon${m.idPokemon}" class="btn"
+					onclick="seleccionar(${m.idPokemon})">${m.nombrePokemon}</td>
+				<td id="pokemon${m.idPokemon}" class="btn"
+					onclick="seleccionar(${m.idPokemon})"><img
+					src="${m.miniaturas}" /></td>
+			</tr>
+		</c:forEach>
+	</table>
+
 
 </div>
 
