@@ -461,7 +461,7 @@ body{
 		left: 230px;
 	}
 
-	div#topcross
+	button#topcross
 	{
 		width: 30px;
 		height: 30px;
@@ -487,7 +487,7 @@ body{
 		-o-border-top-right-radius: 5px;
 	}
 
-	div#leftcross
+	button#leftcross
 	{
 		width: 30px;
 		height: 30px;
@@ -514,7 +514,7 @@ body{
 		-o-border-bottom-left-radius: 5px;
 	}
 
-	div#midcross
+	button#midcross
 	{
 		width: 30px;
 		height: 30px;
@@ -530,7 +530,7 @@ body{
 		-o-box-shadow: -3px 2px #010101;
 	}
 
-	div#rightcross
+	button#rightcross
 	{
 		width: 30px;
 		height: 30px;
@@ -556,7 +556,7 @@ body{
 		-o-border-bottom-right-radius: 5px;
 	}
 
-	div#botcross
+	button#botcross
 	{
 		width: 30px;
 		height: 30px;

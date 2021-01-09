@@ -51,21 +51,21 @@
 				<div id="barbutton1"></div>
 				<div id="barbutton2"></div>
 				<div id="cross">
-					<div id="leftcross">
+					<button id="leftcross" onclick="anterior(${u.idPokemon})">
 						<div id="leftT"></div>
-					</div>
-					<div id="topcross">
+					</button>
+					<button id="topcross" onclick="cincoSiguientes(${u.idPokemon})">
 						<div id="upT"></div>
-					</div>
-					<div id="rightcross">
+					</button>
+					<button id="rightcross" onclick="siguiente(${u.idPokemon})">
 						<div id="rightT"></div>
-					</div>
-					<div id="midcross">
+					</button>
+					<button id="midcross">
 						<div id="midCircle"></div>
-					</div>
-					<div id="botcross">
+					</button>
+					<button id="botcross" onclick="cincoAnteriores(${u.idPokemon})">
 						<div id="downT"></div>
-					</div>
+					</button>
 				</div>
 			</div>
 			<div id="right">
@@ -143,21 +143,21 @@
 				<div id="barbutton1"></div>
 				<div id="barbutton2"></div>
 				<div id="cross">
-					<div id="leftcross">
+					<button id="leftcross" onclick="anterior(${p.idPokemon})">
 						<div id="leftT"></div>
-					</div>
-					<div id="topcross">
-						<div id="upT"></div>
-					</div>
-					<div id="rightcross">
-						<div id="rightT"></div>
-					</div>
-					<div id="midcross">
-						<div id="midCircle"></div>
-					</div>
-					<div id="botcross">
+					</button>
+					<button id="topcross" onclick="cincoSiguientes(${p.idPokemon})">
 						<div id="downT"></div>
-					</div>
+					</button>
+					<button id="rightcross" onclick="siguiente(${p.idPokemon})">
+						<div id="rightT"></div>
+					</button>
+					<button id="midcross">
+						<div id="midCircle"></div>
+					</button>
+					<button id="botcross" onclick="cincoAnteriores(${p.idPokemon})">
+						<div id="downT"></div>
+					</button>
 				</div>
 			</div>
 			<div id="right">
