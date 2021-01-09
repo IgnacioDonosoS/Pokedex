@@ -26,4 +26,5 @@ public class Pokemon {
 	private int peso;
 	private String frase;
 	private String imagen;
+	private String miniaturas;
 }

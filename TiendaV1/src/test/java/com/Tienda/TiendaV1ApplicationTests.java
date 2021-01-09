@@ -38,7 +38,7 @@ void contextLoads() {
 		a.setRol("entrenador");
 		List<Pokemon> pmon = monServ.listarPokemones();
 		Pokedex pdex = new Pokedex(1, pmon);
-		dexServ.agregarUnPokedex(pdex);
+		dexServ.modificarUnPokedex(pdex);
 		a.setPokedex(pdex);
 		uServ.modificarUnUsuario(a);
 	}

@@ -34,7 +34,7 @@ public class WebController {
 			
 			return "index";
 		}else {
-			return "login";
+			return "login"; 
 		}	
 		
 	}
