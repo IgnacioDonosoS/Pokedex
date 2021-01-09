@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.Tienda.modelo.Usuario;
 import com.Tienda.service.PokedexImpl;
 import com.Tienda.service.PokemonImpl;
 import com.Tienda.service.UsuarioImpl;
@@ -28,10 +29,10 @@ public class WebController {
 	
 	@GetMapping("/")
 	public String inicio(Authentication auth, Principal principal, Model model) {
-		
+		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
 		if (auth.getAuthorities().contains(new SimpleGrantedAuthority("entrenador"))) {
-			model.addAttribute("usuario", usuarioServ.buscarUsuarioPorNombre(principal.getName()));
-			
+			model.addAttribute("usuario", usu1);
+			model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
 			return "index";
 		}else {
 			return "login"; 

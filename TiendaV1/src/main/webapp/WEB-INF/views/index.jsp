@@ -11,8 +11,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-	<c:forEach items="${usuario.pokedex.pokemon}" var="u" begin="0" end="0">
-		<div id="pokedex1" style="display: block">
+	<c:forEach items="${usuario.pokedex.pokemon}" var="u" begin="0" end="0" varStatus="i">
+		<div id="pokedex0" style="display: block">
 			<div id="left">
 				<div id="logo"></div>
 				<div id="bg_curve1_left"></div>
@@ -51,19 +51,19 @@
 				<div id="barbutton1"></div>
 				<div id="barbutton2"></div>
 				<div id="cross">
-					<button id="leftcross" onclick="anterior(${u.idPokemon})">
+					<button id="leftcross" onclick="anterior(${i.count})">
 						<div id="leftT"></div>
 					</button>
-					<button id="topcross" onclick="cincoSiguientes(${u.idPokemon})">
+					<button id="topcross" onclick="cincoSiguientes(${i.count})">
 						<div id="upT"></div>
 					</button>
-					<button id="rightcross" onclick="siguiente(${u.idPokemon})">
+					<button id="rightcross" onclick="siguientePokemon0()">
 						<div id="rightT"></div>
 					</button>
 					<button id="midcross">
 						<div id="midCircle"></div>
 					</button>
-					<button id="botcross" onclick="cincoAnteriores(${u.idPokemon})">
+					<button id="botcross" onclick="cincoAnteriores(${i.count})">
 						<div id="downT"></div>
 					</button>
 				</div>
@@ -93,7 +93,7 @@
 				<div id="miniButtonGlass5"></div>
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
-				<button id="yellowBox1" onclick=mostrar(${u.idPokemon})>Colección</button>
+				<button id="yellowBox1" onclick="mostrar(${i.count})">Colección</button>
 				<div id="yellowBox2" class="btn"></div>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
@@ -103,8 +103,8 @@
 		</div>
 	</c:forEach>
 
-	<c:forEach items="${usuario.pokedex.pokemon}" var="p" begin="1">
-		<div id="pokedex${p.idPokemon}" style="display: none">
+	<c:forEach items="${usuario.pokedex.pokemon}" var="p" begin="1" varStatus="i">
+		<div id="pokedex${i.count}" style="display: none">
 			<div id="left">
 				<div id="logo"></div>
 				<div id="bg_curve1_left"></div>
@@ -143,19 +143,19 @@
 				<div id="barbutton1"></div>
 				<div id="barbutton2"></div>
 				<div id="cross">
-					<button id="leftcross" onclick="anterior(${p.idPokemon})">
+					<button id="leftcross" onclick="anterior(${i.count})">
 						<div id="leftT"></div>
 					</button>
-					<button id="topcross" onclick="cincoSiguientes(${p.idPokemon})">
+					<button id="topcross" onclick="cincoSiguientes(${i.count})">
 						<div id="downT"></div>
 					</button>
-					<button id="rightcross" onclick="siguiente(${p.idPokemon})">
+					<button id="rightcross" onclick="siguiente(${i.count})">
 						<div id="rightT"></div>
 					</button>
 					<button id="midcross">
 						<div id="midCircle"></div>
 					</button>
-					<button id="botcross" onclick="cincoAnteriores(${p.idPokemon})">
+					<button id="botcross" onclick="cincoAnteriores(${i.count})">
 						<div id="downT"></div>
 					</button>
 				</div>
@@ -186,7 +186,7 @@
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
 				<button id="yellowBox1"
-					onclick=mostrar(${p.idPokemon})>Colección</button>
+					onclick="mostrar(${i.count})">Colección</button>
 				<div id="yellowBox2" class="btn"></div>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
@@ -210,17 +210,17 @@
 
 			<th>Imagen:</th>
 		</tr>
-		<c:forEach items="${usuario.pokedex.pokemon}" var="m">
+		<c:forEach items="${usuario.pokedex.pokemon}" var="m" varStatus="i">
 			<tr>
-				<td id="pokemon${m.idPokemon}" class="btn"
-					onclick="seleccionar(${m.idPokemon})">${m.nombrePokemon}</td>
-				<td id="pokemon${m.idPokemon}" class="btn"
-					onclick="seleccionar(${m.idPokemon})"><img
+				<td id="pokemon${i.count}" class="btn"
+					onclick="seleccionar(${i.count})">${m.nombrePokemon}</td>
+				<td id="pokemon${i.count}" class="btn"
+					onclick="seleccionar(${i.count})"><img
 					src="${m.miniaturas}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
-
+<input type="hidden" id="numeroPokemones" value="${numeroPokemones}">
 
 </div>
 
