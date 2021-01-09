@@ -54,7 +54,7 @@
 					<button id="leftcross" onclick="anterior(${i.count})">
 						<div id="leftT"></div>
 					</button>
-					<button id="topcross" onclick="cincoSiguientes(${i.count})">
+					<button id="topcross" onclick="cincoSiguientePokemon0()">
 						<div id="upT"></div>
 					</button>
 					<button id="rightcross" onclick="siguientePokemon0()">
