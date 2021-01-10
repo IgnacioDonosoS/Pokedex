@@ -10,9 +10,9 @@
 <title>Document</title>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
-<body class="row m-0 bg-dark justify-content-center align-items-center vh-100">
+<body>
 	<c:forEach items="${usuario.pokedex.pokemon}" var="u" begin="0" end="0" varStatus="i">
-		<div id="pokedex0" style="display:block">
+		<div id="pokedex0" style="display: block">
 			<div id="left">
 				<div id="logo"></div>
 				<div id="bg_curve1_left"></div>
