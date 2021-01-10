@@ -53,8 +53,11 @@ function cincoSiguientes(id) {
 			document.getElementById("pokedex" + id).style.display = "none";
 			document.getElementById("pokedex0").style.display = "block";
 		} else {
-			document.getElementById("pokedex" + id).style. sdisplay = "none";
+			document.getElementById("pokedex" + id).style. display = "none";
 			document.getElementById("pokedex" + (id - 5)).style.display = "block";
 		}
 	}
 
+function irA(){
+	location.href = "/login"
+}

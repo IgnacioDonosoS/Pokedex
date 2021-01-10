@@ -95,7 +95,7 @@
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
 				<button id="yellowBox1" onclick="mostrar(${i.count})">Colección</button>
-				<div id="yellowBox2" class="btn"></div>
+				<button id="yellowBox2" onclick="irA()">Captura uno!</button>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
 				<div id="curve1_right"></div>
@@ -188,7 +188,7 @@
 				<div id="barbutton4"></div>
 				<button id="yellowBox1"
 					onclick="mostrar(${i.count})">Colección</button>
-				<div id="yellowBox2" class="btn"></div>
+				<button id="yellowBox2" onclick="irA()">Captura uno!</button>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
 				<div id="curve1_right"></div>
@@ -280,7 +280,7 @@
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
 				<button id="yellowBox1" onclick="mostrar(${i.count})">Colección</button>
-				<div id="yellowBox2" class="btn"></div>
+				<button id="yellowBox2" onclick="irA()">Captura uno!</button>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
 				<div id="curve1_right"></div>
