@@ -40,4 +40,11 @@ public class WebController {
 		
 	}
 	
+	@GetMapping("captura")
+	public String captura(Principal principal, Model model) {
+		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
+		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
+		return "captura";
+	}
+	
 }

@@ -2,11 +2,15 @@ function mostrar(id) {
 	document.getElementById("pokedex0").style.display = "none";
 	document.getElementById("pokedex" + id).style.display = "none";
 	document.getElementById("tablaObtenidos").style.display = "block";
+	document.getElementById("titulo").style.visibility = "hidden"
+	document.getElementById("titulo1").style.visibility = "hidden"
 }
 
 function seleccionar(id) {
 	document.getElementById("pokedex" + (id - 1)).style.display = "block";
 	document.getElementById("tablaObtenidos").style.display = "none";
+	document.getElementById("titulo").style.visibility = "visible"; 
+	document.getElementById("titulo1").style.visibility = "visible"; 
 }
 
 function siguiente(id) {
@@ -59,5 +63,5 @@ function cincoSiguientes(id) {
 	}
 
 function irA(){
-	location.href = "/login"
+	location.href = "captura"
 }

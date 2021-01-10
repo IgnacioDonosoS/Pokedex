@@ -11,8 +11,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/functions"%>
 </head>
-<body class="row m-0 bg-dark justify-content-center align-items-center vh-100">
+<header>
+<div>
+	<br>
+
+<h1 id="titulo" class="titulo" style="display: block; position: fixed; font-family:'Pokemon Solid Normal';font-weight:normal;font-size:50px; color: yellow;     " >PokeDex</h1>
+<h1 id="titulo1" class="titulo" style="display: block; position: fixed; font-family:'Pokemon Hollow Normal';font-weight:normal;font-size:50px; color: blue; font-weight: bold;    " >PokeDex</h1>
+</div>
+</header>
+
+<body class="row m-0 justify-content-center align-items-center vh-100" style="background: black;">
 	<c:forEach items="${usuario.pokedex.pokemon}" var="u" begin="0" end="0" varStatus="i">
+	
 		<div id="pokedex0" style="display:block">
 			<div id="left">
 				<div id="logo"></div>
@@ -307,7 +317,7 @@
 		<c:forEach items="${usuario.pokedex.pokemon}" var="m" varStatus="i">
 			<tr>
 				<td id="pokemon${i.count}" class="btn"
-					onclick="seleccionar(${i.count})">${m.nombrePokemon}</td>
+					onclick="seleccionar(${i.count})" style="color:white;">${m.nombrePokemon}</td>
 				<td id="pokemon${i.count}" class="btn"
 					onclick="seleccionar(${i.count})"><img
 					src="${m.miniaturas}" /></td>
@@ -318,7 +328,10 @@
 
 </div>
 
+<footer class="bg-dark">
+<label style="position: absolute; bottom: 10px; left: 6px; font-size: 20px ">Footer</label>
 
+</footer>
 
 </body>
 </html>
