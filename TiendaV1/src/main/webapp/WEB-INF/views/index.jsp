@@ -104,7 +104,7 @@
 				<div id="miniButtonGlass5"></div>
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
-				<button id="yellowBox1" onclick="mostrar(${i.count})">Colección</button>
+				<button id="yellowBox1" onclick="mostrar(0)">Colección</button>
 				<button id="yellowBox2" onclick="irA()">Captura uno!</button>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
@@ -289,7 +289,7 @@
 				<div id="miniButtonGlass5"></div>
 				<div id="barbutton3"></div>
 				<div id="barbutton4"></div>
-				<button id="yellowBox1" onclick="mostrar(${i.count})">Colección</button>
+				<button id="yellowBox1" onclick="mostrar(${numeroPokemones-1})">Colección</button>
 				<button id="yellowBox2" onclick="irA()">Captura uno!</button>
 				<div id="bg_curve1_right"></div>
 				<div id="bg_curve2_right"></div>
@@ -306,16 +306,18 @@
 
 
 
-<div id="tablaObtenidos" style="display: none">
+<div id="tablaObtenidos" style="display: none" class="row m-0 justify-content-center align-items-center vh-100">
 	<table>
 		<!-- here should go some titles... -->
 		<tr>
-			<th>Nombre:</th>
-
-			<th>Imagen:</th>
+			<th></th>
+			<th></th>
+			<th></th>
 		</tr>
 		<c:forEach items="${usuario.pokedex.pokemon}" var="m" varStatus="i">
 			<tr>
+			<td id="pokemon${i.count}" class="btn"
+					onclick="seleccionar(${i.count})" style="color:white;">${m.idPokemon}</td>
 				<td id="pokemon${i.count}" class="btn"
 					onclick="seleccionar(${i.count})" style="color:white;">${m.nombrePokemon}</td>
 				<td id="pokemon${i.count}" class="btn"

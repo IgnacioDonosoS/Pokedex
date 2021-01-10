@@ -28,6 +28,7 @@ class TiendaV1ApplicationTests {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	@SuppressWarnings("null")
 	@Test
 void contextLoads() {
 		
@@ -41,6 +42,17 @@ void contextLoads() {
 		dexServ.modificarUnPokedex(pdex);
 		a.setPokedex(pdex);
 		uServ.modificarUnUsuario(a);
+		Usuario d = new Usuario();
+		d.setIdUsuario(2);
+		d.setNombre("nacho");
+		d.setPassword(encoder.encode("12345"));
+		d.setRol("entrenador");
+		ArrayList<Pokemon> pmone = new ArrayList<Pokemon>();
+		pmon.add(monServ.buscarPokemonPorId(25));
+		Pokedex pdexe = new Pokedex(2, pmone);
+		dexServ.modificarUnPokedex(pdexe);
+		d.setPokedex(pdexe);
+		uServ.agregarUnUsuario(d);
 	}
 
 }

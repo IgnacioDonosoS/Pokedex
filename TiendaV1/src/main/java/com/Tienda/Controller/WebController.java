@@ -1,6 +1,9 @@
 package com.Tienda.Controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.Tienda.modelo.Pokemon;
 import com.Tienda.modelo.Usuario;
 import com.Tienda.service.PokedexImpl;
 import com.Tienda.service.PokemonImpl;
@@ -42,8 +46,16 @@ public class WebController {
 	
 	@GetMapping("captura")
 	public String captura(Principal principal, Model model) {
-		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
-		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
+		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
+		List<Pokemon> listaPokes = pokemonServ.listarPokemones(); 
+		for (int i = 0; i < listaPokes.size(); i++) {
+		for (int j = 0; j < listaPokesUsu.size(); j++) {
+			if (listaPokes.get(i).getIdPokemon()==listaPokesUsu.get(j).getIdPokemon()) {
+				listaPokes.remove(i);
+			};
+		}	
+		}
+		model.addAttribute("pokemonesFaltantes", listaPokes);
 		return "captura";
 	}
 	
