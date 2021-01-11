@@ -10,4 +10,6 @@ public interface IPokemon {
 	public void borrarUnPokemon(int id);
 	public Pokemon modificarUnPokemon(Pokemon pokemon);
 	public Pokemon agregarUnPokemon(Pokemon pokemon);
+	public List<Pokemon> filtrarPokemonFaltante(String principalNombre);
+	public Pokemon agregarPokeUsuario(String principalNombre, int idPoke);
 }

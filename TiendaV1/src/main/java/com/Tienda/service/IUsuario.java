@@ -12,4 +12,5 @@ public interface IUsuario {
 	public Usuario modificarUnUsuario(Usuario usuario);
 	public Usuario agregarUnUsuario(Usuario usuario);
 	public Usuario buscarUsuarioPorNombre(String nombre);
+	public Usuario filtrarPokemonesPorIdEnUsuario(Usuario usuario);
 }

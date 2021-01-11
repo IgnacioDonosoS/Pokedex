@@ -52,31 +52,15 @@ public class WebController {
 	
 	@GetMapping("captura")
 	public String captura(Principal principal, Model model) {
-		///Filtra la lista usuario Contra la lista total de pokemones en la bd.
-		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
-		List<Pokemon> listaPokes = pokemonServ.listarPokemones(); 
-		for (int i = 0; i < listaPokes.size(); i++) {
-		for (int j = 0; j < listaPokesUsu.size(); j++) {
-			if (listaPokes.get(i).getIdPokemon()==listaPokesUsu.get(j).getIdPokemon()) {
-				listaPokes.remove(i);
-			};
-		}	
-		}
-		model.addAttribute("pokemonesFaltantes", listaPokes);
+		model.addAttribute("pokemonesFaltantes", pokemonServ.filtrarPokemonFaltante(principal.getName()));
 		return "captura";
 	}
 	
 	@PostMapping("agregarPoke")
 	public String agregarPoke(Model model, int pokeAgregar, Principal principal) {
 		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
-		List<Pokemon> listaPokesUsu = usu1.getPokedex().getPokemon();
-		listaPokesUsu.add(pokemonServ.buscarPokemonPorId(pokeAgregar));
-		Pokedex pdex = new Pokedex();
-		pdex.setIdPokedex(usu1.getPokedex().getIdPokedex());
-		pdex.setPokemon(listaPokesUsu);
-		pokedexServ.modificarUnPokedex(pdex);
-		
-		model.addAttribute("usuario", usu1);
+		pokemonServ.agregarPokeUsuario(principal.getName(), pokeAgregar);
+		model.addAttribute("usuario", usuarioServ.filtrarPokemonesPorIdEnUsuario(usu1));
 		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
 		return "index";
 	}
