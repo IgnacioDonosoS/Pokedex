@@ -26,9 +26,11 @@
 			<td>${p.idPokemon}</td>
 			<td>${p.nombrePokemon}</td>
 			<td><img src="${p.miniaturas}"/></td>
-			<td><form method="post" action="pokeAgregar" id="pokeAgregar${p.idPokemon}">
+			<td><form method="POST" action="agregarPoke" id="pokeAgregar${p.idPokemon}">
 			<input type="hidden" value="${p.idPokemon}" name="pokeAgregar"> 
 			<input type="button" value="Agregar" id="pokeAgregar${p.idPokemon}" onclick="pokesAgregar(${p.idPokemon})">
+			 <input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}">
 			 </form></td>
 	   </tr>
 	</c:forEach>

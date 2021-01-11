@@ -2,6 +2,7 @@ package com.Tienda.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,26 +20,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
 
 	  @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	        auth.userDetailsService(uServ).passwordEncoder(encoder);
 	    }
-
+	 @Bean
+	    public DaoAuthenticationProvider authenticationProvider() {
+	        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+	        authProvider.setUserDetailsService(userDetailsService());
+	        authProvider.setPasswordEncoder(passwordEncoder());
+	         
+	        return authProvider;
+	    }
+	  
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCPE = new BCryptPasswordEncoder();
 		return bCPE;
 	}
-
+	
 	@Override
     public void configure (HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
         .antMatchers("/css/**", "/js/**", "/img/**")
         .permitAll()
-        .antMatchers("/login", "/", "/index")
+        .antMatchers("/login", "/", "/index", "/agregarPoke", "/captura")
         .hasAnyAuthority("entrenador")
         .antMatchers("/agregar", "/agregarAtencion")
         .hasAuthority("entrenador")

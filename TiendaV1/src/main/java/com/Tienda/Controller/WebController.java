@@ -2,6 +2,9 @@ package com.Tienda.Controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.comparator.Comparators;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -48,6 +52,7 @@ public class WebController {
 	
 	@GetMapping("captura")
 	public String captura(Principal principal, Model model) {
+		///Filtra la lista usuario Contra la lista total de pokemones en la bd.
 		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
 		List<Pokemon> listaPokes = pokemonServ.listarPokemones(); 
 		for (int i = 0; i < listaPokes.size(); i++) {
@@ -61,24 +66,25 @@ public class WebController {
 		return "captura";
 	}
 	
-	@PostMapping("pokeAgregar")
-	public String pokeAgregar(Model model, int pokeAgregar, Principal principal)
-	{
+	@PostMapping("agregarPoke")
+	public String agregarPoke(Model model, int pokeAgregar, Principal principal) {
+//		ArrayList<Pokemon> listaPokeOrdenada = new ArrayList<Pokemon>();
 		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
-		List<Pokemon> listaPokes = pokemonServ.listarPokemones(); 
-		for (int i = 0; i < listaPokes.size(); i++) {
-		for (int j = 0; j < listaPokesUsu.size(); j++) {
-			if (listaPokes.get(i).getIdPokemon()==listaPokesUsu.get(j).getIdPokemon()) {
-				listaPokes.remove(i);
-			};
-		}	
-		}
-		model.addAttribute("pokemonesFaltantes", listaPokes);
 		listaPokesUsu.add(pokemonServ.buscarPokemonPorId(pokeAgregar));
 		Pokedex pdex = new Pokedex();
 		pdex.setIdPokedex(usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getIdPokedex());
 		pdex.setPokemon(listaPokesUsu);
-		return "captura";
+		pokedexServ.modificarUnPokedex(pdex);
+		
+		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
+//		for (int i = 0; i < usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon().size(); i++) {
+//			usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon(i).get
+//			
+//		}
+		usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
+		model.addAttribute("usuario", usu1);
+		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
+		return "index";
 	}
 	
 }
