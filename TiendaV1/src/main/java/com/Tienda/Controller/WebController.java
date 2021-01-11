@@ -11,7 +11,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.Tienda.modelo.Pokedex;
 import com.Tienda.modelo.Pokemon;
 import com.Tienda.modelo.Usuario;
 import com.Tienda.service.PokedexImpl;
@@ -56,6 +58,26 @@ public class WebController {
 		}	
 		}
 		model.addAttribute("pokemonesFaltantes", listaPokes);
+		return "captura";
+	}
+	
+	@PostMapping("pokeAgregar")
+	public String pokeAgregar(Model model, int pokeAgregar, Principal principal)
+	{
+		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
+		List<Pokemon> listaPokes = pokemonServ.listarPokemones(); 
+		for (int i = 0; i < listaPokes.size(); i++) {
+		for (int j = 0; j < listaPokesUsu.size(); j++) {
+			if (listaPokes.get(i).getIdPokemon()==listaPokesUsu.get(j).getIdPokemon()) {
+				listaPokes.remove(i);
+			};
+		}	
+		}
+		model.addAttribute("pokemonesFaltantes", listaPokes);
+		listaPokesUsu.add(pokemonServ.buscarPokemonPorId(pokeAgregar));
+		Pokedex pdex = new Pokedex();
+		pdex.setIdPokedex(usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getIdPokedex());
+		pdex.setPokemon(listaPokesUsu);
 		return "captura";
 	}
 	

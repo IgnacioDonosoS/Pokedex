@@ -65,3 +65,7 @@ function cincoSiguientes(id) {
 function irA(){
 	location.href = "captura"
 }
+function pokesAgregar(id)
+{ 	
+	document.getElementById("pokeAgregar" + id).submit();
+}
