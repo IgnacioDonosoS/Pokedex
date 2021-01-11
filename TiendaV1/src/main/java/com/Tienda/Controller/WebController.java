@@ -68,20 +68,14 @@ public class WebController {
 	
 	@PostMapping("agregarPoke")
 	public String agregarPoke(Model model, int pokeAgregar, Principal principal) {
-//		ArrayList<Pokemon> listaPokeOrdenada = new ArrayList<Pokemon>();
-		List<Pokemon> listaPokesUsu = usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
+		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
+		List<Pokemon> listaPokesUsu = usu1.getPokedex().getPokemon();
 		listaPokesUsu.add(pokemonServ.buscarPokemonPorId(pokeAgregar));
 		Pokedex pdex = new Pokedex();
-		pdex.setIdPokedex(usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getIdPokedex());
+		pdex.setIdPokedex(usu1.getPokedex().getIdPokedex());
 		pdex.setPokemon(listaPokesUsu);
 		pokedexServ.modificarUnPokedex(pdex);
 		
-		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
-//		for (int i = 0; i < usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon().size(); i++) {
-//			usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon(i).get
-//			
-//		}
-		usuarioServ.buscarUsuarioPorNombre(principal.getName()).getPokedex().getPokemon();
 		model.addAttribute("usuario", usu1);
 		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
 		return "index";
