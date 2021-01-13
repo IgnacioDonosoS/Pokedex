@@ -41,7 +41,7 @@ public class WebController {
 	public String inicio(Authentication auth, Principal principal, Model model) {
 		Usuario usu1 = usuarioServ.buscarUsuarioPorNombre(principal.getName());
 		if (auth.getAuthorities().contains(new SimpleGrantedAuthority("entrenador"))) {
-			model.addAttribute("usuario", usu1);
+			model.addAttribute("usuario", usuarioServ.filtrarPokemonesPorIdEnUsuario(usu1));
 			model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
 			return "index";
 		}else {

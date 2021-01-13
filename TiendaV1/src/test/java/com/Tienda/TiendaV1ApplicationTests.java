@@ -28,20 +28,20 @@ class TiendaV1ApplicationTests {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	@SuppressWarnings("null")
 	@Test
 void contextLoads() {
 		
-//		Usuario a = new Usuario();
-//		a.setIdUsuario(1);
-//		a.setNombre("angela");
-//		a.setPassword(encoder.encode("12345"));
-//		a.setRol("entrenador");
-//		List<Pokemon> pmon = monServ.listarPokemones();
-//		Pokedex pdex = new Pokedex(1, pmon);
-//		dexServ.modificarUnPokedex(pdex);
-//		a.setPokedex(pdex);
-//		uServ.modificarUnUsuario(a);
+		Usuario a = new Usuario();
+		a.setIdUsuario(1);
+		a.setNombre("angela");
+		a.setPassword(encoder.encode("12345"));
+		a.setRol("entrenador");
+		List<Pokemon> pmon = monServ.listarPokemones();
+		Pokedex pdex = new Pokedex(1, pmon);
+		dexServ.agregarUnPokedex(pdex);
+		a.setPokedex(pdex);
+		uServ.agregarUnUsuario(a);
+		
 	Usuario d = new Usuario();
 	d.setIdUsuario(2);
 	d.setNombre("nacho");
@@ -59,9 +59,9 @@ void contextLoads() {
 	pmone.add(monServ.buscarPokemonPorId(8));
 	pmone.add(monServ.buscarPokemonPorId(9));
 	Pokedex pdexe = new Pokedex(2, pmone);
-	dexServ.agregarUnPokedex(pdexe);
+	dexServ.modificarUnPokedex(pdexe);
 	d.setPokedex(pdexe);
-	uServ.agregarUnUsuario(d);
+	uServ.modificarUnUsuario(d);
 	}
 
 }

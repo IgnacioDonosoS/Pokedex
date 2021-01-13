@@ -1,5 +1,6 @@
 package com.Tienda.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,28 +60,19 @@ public class PokemonImpl implements IPokemon {
 
 	@Override
 	public List<Pokemon> filtrarPokemonFaltante(String principalNombre) {
-
-		List<Pokemon> listaPokesUsu = usuServ.buscarUsuarioPorNombre(principalNombre).getPokedex().getPokemon();
-		List<Pokemon> listaPokes = pokemonServ.listarPokemones();
-		for (int i = 0; i < listaPokes.size(); i++) {
-			for (int j = 0; j < listaPokesUsu.size(); j++) {
-				if (listaPokes.get(i).getIdPokemon() == listaPokesUsu.get(j).getIdPokemon()) {
-					listaPokes.remove(i);
-				}
-				;
-			}
-		}
-		return listaPokes;
+		ArrayList<Pokemon> listaPokesUsu = new ArrayList<>(usuServ.buscarUsuarioPorNombre(principalNombre).getPokedex().getPokemon());
+		ArrayList<Pokemon> listaFiltrada = new ArrayList<>(pokemonServ.listarPokemones());
+		listaFiltrada.removeAll(listaPokesUsu);
+		return listaFiltrada;
 	}
 
 	@Override
 	public Pokemon agregarPokeUsuario(String principalNombre, int idPoke) {
+		
 		Usuario usu1 = usuServ.buscarUsuarioPorNombre(principalNombre);
 		List<Pokemon> listaPokesUsu = usu1.getPokedex().getPokemon();
 		listaPokesUsu.add(pokemonServ.buscarPokemonPorId(idPoke));
-		Pokedex pdex = new Pokedex();
-		pdex.setIdPokedex(usu1.getPokedex().getIdPokedex());
-		pdex.setPokemon(listaPokesUsu);
+		Pokedex pdex = new Pokedex(usu1.getPokedex().getIdPokedex(), listaPokesUsu);
 		pokedexServ.modificarUnPokedex(pdex);
 		return pokemonServ.buscarPokemonPorId(idPoke);
 	}
