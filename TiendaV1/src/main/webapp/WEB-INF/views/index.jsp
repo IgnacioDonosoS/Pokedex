@@ -334,6 +334,4 @@
 <label style="position: absolute; bottom: 10px; left: 6px; font-size: 20px ">Footer</label>
 
 </footer>
-
-</body>
 </html>

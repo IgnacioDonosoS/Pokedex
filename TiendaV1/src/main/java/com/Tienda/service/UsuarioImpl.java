@@ -81,4 +81,21 @@ public class UsuarioImpl implements IUsuario {
 		usuario.getPokedex().setPokemon(listaFiltrada);
 		return usuario;
 	}
+
+	@Override
+	public List<Integer> calculoComplejo(List<Integer> stock) {
+		List<Integer> stockFinal = new ArrayList<Integer>();
+		for (int i = 0; i < stock.size(); i++) {	
+			if (stock.get(i)<10) {
+				stockFinal.add(2);
+			} else { if (stock.get(i)>=10 && stock.get(i)<20) {
+				stockFinal.add((int) ((stock.get(i)*0.05)+2));
+			} else { if (stock.get(i)>=20) {
+				stockFinal.add((int) ((stock.get(i)*0.1)+2));
+			}
+			}
+			}
+		}
+		return stockFinal;	
+	}
 }

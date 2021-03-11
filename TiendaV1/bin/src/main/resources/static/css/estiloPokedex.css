@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #000;
+    background-color: black;
 }
 
 
@@ -257,7 +257,7 @@ body{
 	div#screen
 	{
 		height: 245px;
-		width: 260px;
+		width: 295px;
 		padding: 0 20px;
 		background-color: #b0b0b0;
 		float:left;
@@ -284,13 +284,14 @@ body{
 		left: 0;
 	}
 
+/* Color fondo de la pantalla del pokedex*/
 	div#picture
 	{
 		height: 175px;
 		width: 254px;
 		margin-top: 20px;
 		margin-bottom: 9px;
-		background-color: #fff;
+		background-color: #52CEEB;
 		border: 3px solid #494949;
 		clear: both;
 
@@ -917,7 +918,7 @@ body{
 		-o-box-shadow: 0 0 20px #ff6600 inset;
 	}
 
-	div#yellowBox2
+	button#yellowBox2
 	{
 		width: 140px;
 		height: 70px;
@@ -1020,4 +1021,28 @@ body{
 		display: none;
 	}
 
+}
+
+ @font-face {
+    font-family: 'Pokemon Hollow Normal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Pokemon Hollow Normal'), url('Pokemon Hollow.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Pokemon Solid Normal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Pokemon Solid Normal'), url('Pokemon Solid.woff') format('woff');
+    }
+
+.titulo {
+	display: block;
+	position: static;
+	top: 1px;
+	left: auto;
+	bottom: auto;
+	right: auto;
 }

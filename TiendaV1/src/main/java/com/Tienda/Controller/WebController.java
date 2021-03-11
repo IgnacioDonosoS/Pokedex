@@ -64,5 +64,5 @@ public class WebController {
 		model.addAttribute("numeroPokemones", usu1.getPokedex().getPokemon().size());
 		return "index";
 	}
-	
+
 }

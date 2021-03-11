@@ -13,4 +13,5 @@ public interface IUsuario {
 	public Usuario agregarUnUsuario(Usuario usuario);
 	public Usuario buscarUsuarioPorNombre(String nombre);
 	public Usuario filtrarPokemonesPorIdEnUsuario(Usuario usuario);
+	public List<Integer> calculoComplejo(List<Integer> stock);
 }
